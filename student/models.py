@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 import os
 from django.db import models
 #this resolves url
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 import datetime
 from company.models import Job_desc
 # Create your models here.
@@ -60,7 +60,7 @@ class Notifications(models.Model):
     jobid = models.ForeignKey(Job_desc, on_delete=models.CASCADE,null=True)
     n_text=models.CharField(max_length=250,null=True)
     old=models.BooleanField(default=True)
-    stdid=models.ForeignKey(StudentDB,null=True)
+    stdid=models.ForeignKey(StudentDB,on_delete=models.CASCADE)
     def __str__(self):
         return str(self.n_text)
 
